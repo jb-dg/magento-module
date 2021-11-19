@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Origines_Manufacturer::manufacturers" title="Manufacturers" translate="title" module="Origines_Manufacturer" sortOrder="100"
+             parent="Magento_Catalog::catalog" dependsOnModule="Magento_Catalog" resource="Origines_Manufacturer::manufacturers" />
+
+        <add id="Origines_Manufacturer::manufacturer" title="Manufacturers" translate="title" module="Origines_Manufacturer"
+             sortOrder="10" parent="Origines_Manufacturer::manufacturers" action="manufacturer/manufacturer"
+             resource="Origines_Manufacturer::manufacturer"/>
+    </menu>
+</config>

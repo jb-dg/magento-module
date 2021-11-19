@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <fieldset name="content">
+        <field name="manufacturer" sortOrder="1" formElement="select">
+            <settings>
+                <dataType>int</dataType>
+                <label translate="true">Manufacturer</label>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Origines\Manufacturer\Model\Config\ManufacturerOptions"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+    </fieldset>
+</form>

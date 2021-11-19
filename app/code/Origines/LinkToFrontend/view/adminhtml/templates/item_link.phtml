@@ -1,0 +1,9 @@
+<?php
+$_item = $block->getItem();
+if ($_item != null && $_item->getProduct() != null): ?>
+    <div class="product-link-block">
+        <a href="<?= $block->escapeUrl($_item->getProduct()->getProductUrl()) ?>" target="_blank">
+            <?= $block->escapeHtml(__('Link to Product')) ?>
+        </a>
+    </div>
+<?php endif; ?>

@@ -1,0 +1,98 @@
+<?php
+$productViewModel = $block->getProductViewModel();
+$helperOutput = $productViewModel->getCatalogHelperOutput();
+$image = 'category_page_list';
+?>
+<div class="slider__container is_mobile_one_half">
+    <div class="slider_title__container">
+        <h2 class="slider__title"><?= $block->getTitle();?></h2>
+        <h3 class="slider__subtitle"><?= $block->getSubtitle();?></h3>
+    </div>
+
+    <div class="slider__content">
+        <div data-mage-init='{"slickInit":{"sliderType":"classique"}}' class="will_be_slider">
+            <?php
+            foreach ($block->getProductCollection() as $_product){
+                $isSaleable = $_product->isSaleable();
+                $brandId = $_product->getData('manufacturer');
+                $productListSku[] = $_product->getSku();
+                if (!isset($brands[$brandId])) {
+                    $brands[$brandId] = $_product->getAttributeText('manufacturer');
+                }
+                $brand = $brands[$brandId];
+                ?>
+                <div class="slider__item">
+                    <div class="bloc_produit__container">
+                        <?php $_productNameStripped = $block->stripTags($_product->getName(), null, true); ?>
+                        <a class="bloc_produit_image__container" href="<?= $block->escapeUrl($_product->getProductUrl()); ?>"  title="<?= $block->escapeHtmlAttr($_productNameStripped); ?>">
+
+                            <?php $salePercent = $productViewModel->getDiscountAmount($_product, null, 'percent');?>
+                            <?php if ($salePercent > 5) : ?>
+                                <span class="pastille_promo">-<?= $block->escapeHtml($salePercent); ?> %</span>
+                            <?php endif ?>
+
+                            <ul class="vignette__container">
+                                <?php
+                                if ($_product->getExclusivity()){
+                                    ?>
+                                    <li><span class="vignette primary"><?= $block->escapeHtml(__('exclusivity')); ?></span></li>
+                                    <?php
+                                }
+                                ?>
+                                <?php
+                                if ($_product->getHeartStroke()){
+                                    ?>
+                                    <li><span class="vignette primary"><?= $block->escapeHtml(__('heart_stroke')); ?></span></li>
+                                    <?php
+                                }
+                                ?>
+                                <?php
+                                if ($_product->getInternetExclusivity()){
+                                    ?>
+                                    <li><span class="vignette primary"><?= $block->escapeHtml(__('internet_exclusivity')); ?></span></li>
+                                    <?php
+                                }
+                                ?>
+                            </ul>
+
+                            <?php $productImage = $block->getImage($_product, $image);?>
+                            <?= $productImage->toHtml(); ?>
+                        </a>
+                        <div class="bloc_produit__details">
+                            <span class="bloc_produit__marque"><?= $block->escapeHtml($brand);?></span>
+                            <span class="bloc_produit__label-primary"><?= $block->escapeHtml($_product->getSecondName()); ?></span>
+                            <span class="bloc_produit__label-secondary"><?= $block->escapeHtml($helperOutput
+                                    ->productAttribute($_product, $_product->getName(), 'name')); ?></span>
+
+                            <div class="bloc_produit__prix">
+                                <?= /* @noEscape */ $block->getProductPrice($_product); ?>
+                            </div>
+
+                            <div class="bloc_produit__review">
+                                <?= $block->getReviewsSummaryHtml($_product) ?>
+                            </div>
+
+                            <div class="bloc_produit__actions">
+                                <?php
+                                if ($isSaleable) {
+                                    ?>
+                                    <a href="#" class="action primary"><span><?= $block->escapeHtmlAttr(__('Add to Cart')) ?></span></a>
+                                    <?php
+                                }else{
+                                    ?>
+                                    <div class="action disabled">
+                                        <?= $block->escapeHtml(__('Out of stock')); ?>
+                                    </div>
+                                    <?php
+                                }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <?php
+            }
+            ?>
+        </div>
+    </div>
+</div>

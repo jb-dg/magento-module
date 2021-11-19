@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="originessys" translate="label" sortOrder="100">
+            <label>Origines</label>
+        </tab>
+        <section id="cronexportsys"  translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>CronExport</label>
+            <tab>originessys</tab>
+            <resource>Origines_CronExport::cronexport_config</resource>
+            <group id="config_period_subscriber" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                 <label>Configurer période change_status_at subscriber newsletter</label>
+                <field id="nb_period_subscriber_status" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <validate>validate-digits validate-length minimum-length-1 maximum-length-3</validate>
+                    <label>Nb de période</label>
+                    <comment><![CDATA[valeur <strong>X</strong> (1, 2 ... max 999)]]></comment>
+                </field>
+                <field id="type_period_subscriber_status" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Type de Période</label>
+                    <source_model>Origines\CronExport\Model\Config\Source\ListTypePeriod</source_model>
+                </field>
+                <comment><![CDATA[
+                    Récuperer les clients/invités qui ont changé de subscriber_status les <strong>X</strong> derniers <strong>jours/mois/années</strong>
+                    <br><em>Si rien n'est renseigné : periode par défault est <strong>-5 jours</strong></em>
+                ]]></comment>
+            </group>
+             <group id="config_period_last_order" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                 <label>Configurer période date_last_order des clients</label>
+                 <field id="nb_period_last_order" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <validate>validate-digits validate-length minimum-length-1 maximum-length-3</validate>
+                    <label>Nb de période</label>
+                    <comment><![CDATA[valeur <strong>X</strong> (1, 2 ... max 999)]]></comment>
+                </field>
+                <field id="type_period_last_order" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Type de Période</label>
+                    <source_model>Origines\CronExport\Model\Config\Source\ListTypePeriod</source_model>
+                </field>
+                <comment><![CDATA[
+                    Récuperer les clients qui ont un <strong>subscriber_status = 0, 1 ou 3</strong> qui ont passé une commande les <strong>X</strong> derniers <strong>jours/mois/années</strong>
+                    <br><em>Si rien n'est renseigné : periode par défault est <strong>-5 jours</strong></em>
+                ]]></comment>
+            </group>
+        </section>
+    </system>
+</config>

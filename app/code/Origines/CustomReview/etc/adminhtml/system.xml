@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="apireviewsys"  translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Api Trustpilot Reviews</label>
+            <tab>originessys</tab>
+            <resource>Origines_CustomReview::customreview_config</resource>
+            <group id="config_api_trustpilot" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Configurer API Trustpilot</label>
+                <field id="enable_api_trustpilot" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Activé API</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="urlbase_api_trustpilot" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Base url de l'api Trustpilot</label>
+                    <comment>Ex: https://api.example.com/v1</comment>
+                </field>
+                <field id="apikey_trustpilot" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Api Key trustpilot</label>
+                </field>
+                 <field id="name_trustpilot" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Name trustpilot</label>
+                </field>
+                <field id="pass_secret_trustpilot" type="password" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Secret Trustpilot</label>
+                </field>
+                <field id="username_login_trustpilot" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Username Login</label>
+                </field>
+                <field id="pass_login_trustpilot" type="password" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Password Login</label>
+                </field>
+                <comment><![CDATA[
+                <strong><a href='https://documentation-apidocumentation.trustpilot.com/'>Documentation developpeur</a></strong>
+                <br>
+                <strong><a href='https://authenticate.trustpilot.com/?redirect_uri=https%3A%2F%2Fbusinessapp.b2b.trustpilot.com%2F%3Flocale%3Dfr-FR%26utm_source%3Dbusinesswebsite%26utm_medium%3Dlogin%26utm_campaign%3Dfree-signup&client_id=nZkt0UMZP2MeF99AOcviMZDmIfiI2L0x&locale=fr-FR&response_type=code&cookie_domain=.trustpilot.com'>
+                Login Trustpilot Business</a></strong>
+                ]]></comment>
+            </group>
+            <group id="config_widget_trustbox" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Configurer Widget TrustBox Product Reviews</label>
+                <field id="display_trustbox_trustpilot_empty" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Cacher la TrustBox quand il n'y a aucun avis à montrer</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="data_style_height" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>data-style-height</label>
+                    <comment>Ex: 600 px OR 100%</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

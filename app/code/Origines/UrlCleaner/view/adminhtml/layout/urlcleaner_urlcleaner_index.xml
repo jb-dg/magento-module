@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+                <block class="Origines\UrlCleaner\Block\Adminhtml\UrlCleaner\Grid" name="adminhtml.block.url_cleaner.grid" as="grid">
+                    <arguments>
+                        <argument name="id" xsi:type="string">urlcleanerGrid</argument>
+                        <argument name="dataSource" xsi:type="object" shared="false">Origines\UrlCleaner\Model\ResourceModel\UrlCleanerCollection</argument>
+                        <argument name="default_sort" xsi:type="string">url_rewrite_id</argument>
+                        <argument name="save_parameters_in_session" xsi:type="string">1</argument>
+                    </arguments>
+                    <block class="Magento\Backend\Block\Widget\Grid\Massaction" name="origines_urlcleaner.grid.massaction" as="grid.massaction">
+                            <arguments>
+                                <argument name="massaction_id_field" xsi:type="string">url_rewrite_id</argument>
+                                <argument name="options" xsi:type="array">
+                                    <item name="delete" xsi:type="array">
+                                        <item name="label" xsi:type="string" translate="true">Delete</item>
+                                        <item name="url" xsi:type="string">*/*/massDelete</item>
+                                        <item name="confirm" xsi:type="string" translate="true">Are you sure you want to delete?
+                                        </item>
+                                    </item>
+                                </argument>
+                            </arguments>
+                        </block>
+                    <block class="Magento\Backend\Block\Widget\Grid\ColumnSet" as="grid.columnSet" name="adminhtml.url_cleaner.grid.columnSet">
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" name="adminhtml.url_cleaner.grid.columnSet.url_rewrite_id" as="url_rewrite_id">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">ID</argument>
+                                <argument name="type" xsi:type="string">text</argument>
+                                <argument name="id" xsi:type="string">url_rewrite_id</argument>
+                                <argument name="index" xsi:type="string">url_rewrite_id</argument>
+                                <argument name="column_css_class" xsi:type="string">col-id</argument>
+                                <argument name="header_css_class" xsi:type="string">col-id</argument>
+                            </arguments>
+                        </block>
+                         
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" name="adminhtml.url_cleaner.grid.columnSet.entity_id" as="entity_id">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">entity_id</argument>
+                                <argument name="type" xsi:type="string">text</argument>
+                                <argument name="id" xsi:type="string">entity_id</argument>
+                                <argument name="index" xsi:type="string">entity_id</argument>
+                                <argument name="column_css_class" xsi:type="string">col-id</argument>
+                                <argument name="header_css_class" xsi:type="string">col-id</argument>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column\Multistore" name="adminhtml.url_cleaner.grid.columnSet.store_id" as="store_id">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Store View</argument>
+                                <argument name="type" xsi:type="string">store</argument>
+                                <argument name="id" xsi:type="string">store_id</argument>
+                                <argument name="index" xsi:type="string">store_id</argument>
+                                <argument name="store_view" xsi:type="string">true</argument>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" name="adminhtml.url_cleaner.grid.columnSet.request_path" as="request_path">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Request Path</argument>
+                                <argument name="type" xsi:type="string">text</argument>
+                                <argument name="id" xsi:type="string">request_path</argument>
+                                <argument name="index" xsi:type="string">request_path</argument>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" name="adminhtml.url_cleaner.grid.columnSet.target_path" as="target_path">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Target Path</argument>
+                                <argument name="type" xsi:type="string">text</argument>
+                                <argument name="id" xsi:type="string">target_path</argument>
+                                <argument name="index" xsi:type="string">target_path</argument>
+                            </arguments>
+                        </block>
+                    </block>
+                </block>
+        </referenceContainer>
+    </body>
+</page>

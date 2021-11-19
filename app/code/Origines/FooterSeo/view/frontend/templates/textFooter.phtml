@@ -1,0 +1,8 @@
+<span id="footer-text" class="txt_btm_block_1">
+    <?php if ($block->getCustomFooter() == 'default'): ?>
+        <?= $block->getLayout()
+            ->createBlock(Magento\Cms\Block\Block::class)->setBlockId('footer_reference')->toHtml() ?>
+    <?php else: ?>
+        <?= /* @noEscape */ $block->getCustomFooter() ?>
+    <?php endif; ?>
+</span>

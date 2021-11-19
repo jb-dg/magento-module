@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="apinewslettersys"  translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>ApiNewsletter</label>
+            <tab>originessys</tab>
+            <resource>Origines_CronExport::apinewsletter_config</resource>
+            <group id="config_coupon_code" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Configurer la générateur de code KDO</label>
+                <field id="enable_coupon_code_ac" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Activé envoi code KDO</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="id_custom_field_ac" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <validate>validate-digits validate-length minimum-length-1 maximum-length-3</validate>
+                    <label>ID Champ personnalisé coupon code AC</label>
+                    <comment><![CDATA[valeur <strong>X</strong> (1, 2 ... max 999)]]></comment>
+                </field>
+                <field id="coupon_code_rule_id" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <validate>validate-digits validate-length minimum-length-1 maximum-length-3</validate>
+                    <label>ID regle panier</label>
+                    <comment><![CDATA[valeur <strong>X</strong> (1, 2 ... max 999)]]></comment>
+                </field>
+                <field id="coupon_code_qty" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <validate>validate-digits validate-length minimum-length-1 maximum-length-3</validate>
+                    <label>Quantité code</label>
+                    <comment><![CDATA[valeur <strong>X</strong> (1, 2 ... max 999)]]></comment>
+                </field>
+                <field id="coupon_code_length" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <validate>validate-digits validate-length minimum-length-1 maximum-length-3</validate>
+                    <label>Longueur du code</label>
+                    <comment><![CDATA[valeur <strong>X</strong> (1, 2 ... max 999)]]></comment>
+                </field>
+                <field id="coupon_code_format" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Format du code</label>
+                    <source_model>Origines\ApiNewsletter\Model\Config\Source\CouponCodeFormatList</source_model>
+                </field>
+                <field id="coupon_code_prefix" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Prefix du code</label>
+                </field>
+                <field id="coupon_code_suffix" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Suffix du code</label>
+                </field>
+                <comment><![CDATA[
+                <strong>Créer une règle prix panier avant de configurer le code KDO ! <br>
+                 Vous avez besoin de l'identifiant de la règle panier pour que ça fonctionne</strong>
+                 <br><br>Le code KDO sera envoyer et attribuer à un contact sur Active Campaign.
+                ]]></comment>
+            </group>
+        </section>
+    </system>
+</config>

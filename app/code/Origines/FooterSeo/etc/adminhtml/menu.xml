@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<add id="Origines_FooterSeo::FooterSeo" title="Footer SEO" module="Origines_FooterSeo" sortOrder="140" parent="Magento_Backend::content_elements" action="footerseo/footerseo" resource="Origines_FooterSeo::FooterSeo" dependsOnModule="Magento_Backend" />
+	</menu>
+</config>

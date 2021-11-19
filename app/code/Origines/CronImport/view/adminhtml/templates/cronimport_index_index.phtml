@@ -1,0 +1,35 @@
+<div class="page-actions">
+    <div class="page-actions-inner">
+        <div class="page-actions-buttons">
+            <?= $block->getChildHtml() ?>
+             <form class="action-element"
+                  action="<?= $block->escapeUrl($block->getUrl('*/import/ImportDataAttribute')) ?>"
+                  method="post">
+                <input
+                    name="form_key"
+                    type="hidden"
+                    value="<?= $block->escapeHtmlAttr($block->getFormKey()) ?>"/>
+                <button
+                    class="action-secondary"
+                    type="submit"
+                    title="<?= $block->escapeHtmlAttr(__('Importer les Attributs')) ?>">
+                    <?= $block->escapeHtml(__('Importer les Attributs')) ?>
+                </button>
+            </form>
+            <form class="action-element"
+                  action="<?= $block->escapeUrl($block->getUrl('*/import/DeleteAttributeOptions')) ?>"
+                  method="post">
+                <input
+                    name="form_key"
+                    type="hidden"
+                    value="<?= $block->escapeHtmlAttr($block->getFormKey()) ?>"/>
+                <button
+                    class="action-secondary"
+                    type="submit"
+                    title="<?= $block->escapeHtmlAttr(__('Supprimer les Attribute options')) ?>">
+                    <?= $block->escapeHtml(__('Supprimer les Attributs options')) ?>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

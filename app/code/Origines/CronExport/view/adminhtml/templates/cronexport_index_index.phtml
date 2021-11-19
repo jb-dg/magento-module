@@ -1,0 +1,90 @@
+<div class="page-actions">
+    <div class="page-actions-inner">
+        <div class="page-actions-buttons">
+            <?= $block->getChildHtml() ?>
+
+            <form class="action-element"
+                  action="<?= $block->escapeUrl($block->getUrl('*/export/ExportProductsToCsv')) ?>"
+                  method="post">
+                <input
+                    name="form_key"
+                    type="hidden"
+                    value="<?= $block->escapeHtmlAttr($block->getFormKey()) ?>"/>
+                <input
+                    name="export-type"
+                    type="hidden"
+                    value="<?= $block->escapeHtml(__('RAZ')) ?>"/>
+                <button
+                    class="action-primary"
+                    type="submit"
+                    title="<?= $block->escapeHtmlAttr(__('RAZ Gestion site')) ?>">
+                    <?= $block->escapeHtml(__('RAZ Gestion site')) ?>
+                </button>
+            </form>
+
+            <form class="action-element"
+                  action="<?= $block->escapeUrl($block->getUrl('*/export/ExportProductsToCsv')) ?>"
+                  method="post">
+                <input
+                    name="form_key"
+                    type="hidden"
+                    value="<?= $block->escapeHtmlAttr($block->getFormKey()) ?>"/>
+                    <input
+                    name="export-type"
+                    type="hidden"
+                    value="<?= $block->escapeHtml(__('FULL')) ?>"/>
+                <button
+                    class="action-secondary"
+                    type="submit"
+                    title="<?= $block->escapeHtmlAttr(__('Export des produits')) ?>">
+                    <?= $block->escapeHtml(__('Export des produits')) ?>
+                </button>
+            </form>
+
+            <form class="action-element"
+                  action="<?= $block->escapeUrl($block->getUrl('*/export/ExportCustomersToCsv')) ?>"
+                  method="post">
+                <input
+                    name="form_key"
+                    type="hidden"
+                    value="<?= $block->escapeHtmlAttr($block->getFormKey()) ?>"/>
+                <button
+                    class="action-secondary"
+                    type="submit"
+                    title="<?= $block->escapeHtmlAttr(__('Export des clients newsletter')) ?>">
+                    <?= $block->escapeHtml(__('Export des clients newsletter')) ?>
+                </button>
+            </form>
+
+            <form class="action-element"
+                  action="<?= $block->escapeUrl($block->getUrl('*/export/ExportOrdersToCsv')) ?>"
+                  method="post">
+                <input
+                    name="form_key"
+                    type="hidden"
+                    value="<?= $block->escapeHtmlAttr($block->getFormKey()) ?>"/>
+                <button
+                    class="action-secondary"
+                    type="submit"
+                    title="<?= $block->escapeHtmlAttr(__('Export des commandes')) ?>">
+                    <?= $block->escapeHtml(__('Export des commandes')) ?>
+                </button>
+            </form>
+
+            <form class="action-element"
+                  action="<?= $block->escapeUrl($block->getUrl('*/export/ExportCategoryToCsv')) ?>"
+                  method="post">
+                <input
+                    name="form_key"
+                    type="hidden"
+                    value="<?= $block->escapeHtmlAttr($block->getFormKey()) ?>"/>
+                <button
+                    class="action-secondary"
+                    type="submit"
+                    title="<?= $block->escapeHtmlAttr(__('Export des categories')) ?>">
+                    <?= $block->escapeHtml(__('Export des categories')) ?>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

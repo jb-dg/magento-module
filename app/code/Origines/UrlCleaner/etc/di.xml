@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+ <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+  <arguments>
+   <argument name="collections" xsi:type="array">
+     <item name="origines_urlcleaner_urlcleaner_listing_data_source" xsi:type="string">OriginesUrlCleanerCollection</item>
+   </argument>
+  </arguments>
+ </type>
+ <virtualType name="OriginesUrlCleanerCollection" type="Origines\UrlCleaner\Ui\DataProvider\UrlCleaner\Listing\Collection">
+   <arguments>
+     <argument name="mainTable" xsi:type="string">url_rewrite</argument>
+     <argument name="resourceModel" xsi:type="string">Origines\UrlCleaner\Model\ResourceModel\UrlCleaner</argument>
+   </arguments>
+ </virtualType>
+</config>

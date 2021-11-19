@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+	<head>
+        <title>Import ERP</title>
+    </head> 
+	<body>
+        <referenceContainer name="page.main.actions">
+            <block class="Origines\CronImport\Block\Adminhtml\Index\Index" name="cronimport_block_adminhtml_index_index"  template="Origines_CronImport::cronimport_index_index.phtml" />
+        </referenceContainer>
+    </body>
+</page>

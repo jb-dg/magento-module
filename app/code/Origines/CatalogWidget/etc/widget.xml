@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget_file.xsd">
+    <widget id="myorigines_catalogwidget_myselectionproduct" class="Origines\CatalogWidget\Block\Widget\MySelectionProduct" >
+        <label translate="true">Promo produit MySelection</label>
+        <description translate="true">Promo d'un produit</description>
+        <parameters>
+            <parameter name="id_product" xsi:type="block" visible="true" required="true" sort_order="20">
+                <label translate="true">Product</label>
+                <block class="Magento\Catalog\Block\Adminhtml\Product\Widget\Chooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string" translate="true">Select Product...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="my_selection_packshot" xsi:type="block" visible="true" sort_order="10">
+                <label translate="true">Packshot produit</label>
+                <description translate="true">Packshot produit</description>
+                <block class="Origines\CatalogWidget\Block\Adminhtml\Widget\ImageChooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string">Choose Image</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="my_selection_percent" visible="true" xsi:type="select" sort_order="10">
+                <label>Pastilles pourcentage</label>
+                <options>
+                    <option name="percent_sales-on" value="1">
+                        <label translate="true">Afficher</label>
+                    </option>
+                    <option name="percent_sales-off" value="0">
+                        <label translate="true">Ne pas afficher</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="template" xsi:type="select">
+                <label>Template</label>
+                <options>
+                    <option name="new_product" value="Origines_CatalogWidget::widget/my-selection-product.phtml">
+                        <label>My Selection Home Page</label>
+                    </option>
+                </options>
+            </parameter>
+        </parameters>
+    </widget>
+    <widget class="Origines\CatalogWidget\Block\Widget\PushProduct2" id="product_push2">
+        <label>Push 2 products</label>
+        <description>Push 2 products</description>
+        <parameters>
+            <parameter name="title1" visible="true" xsi:type="text">
+                <label>Title 1</label>
+            </parameter>
+            <parameter name="url1" visible="true" xsi:type="text">
+                <label>Link to 1</label>
+            </parameter>
+            <parameter name="photo1" xsi:type="block" visible="true">
+                <label translate="true">Photo</label>
+                <description translate="true">Photo</description>
+                <block class="Origines\CatalogWidget\Block\Adminhtml\Widget\ImageChooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string">Choose Image</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="title2" visible="true" xsi:type="text">
+                <label>Title 2</label>
+            </parameter>
+            <parameter name="url2" visible="true" xsi:type="text">
+                <label>Link to 2</label>
+            </parameter>
+            <parameter name="photo2" xsi:type="block" visible="true">
+                <label translate="true">Photo</label>
+                <description translate="true">Photo</description>
+                <block class="Origines\CatalogWidget\Block\Adminhtml\Widget\ImageChooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string">Choose Image</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+        </parameters>
+    </widget>
+    <widget class="Origines\CatalogWidget\Block\Widget\PushProduct" id="product_push">
+        <label>Push product</label>
+        <description>Push product</description>
+        <parameters>
+            <parameter name="title" visible="true" xsi:type="text">
+                <label>Title</label>
+            </parameter>
+            <parameter name="cta" visible="true" xsi:type="text">
+                <label>Call to action</label>
+            </parameter>
+            <parameter name="url" visible="true" xsi:type="text">
+                <label>Link to</label>
+            </parameter>
+            <parameter name="content" visible="true" xsi:type="text">
+                <label>Content</label>
+            </parameter>
+            <parameter name="photo" xsi:type="block" visible="true" sort_order="10">
+                <label translate="true">Photo</label>
+                <description translate="true">Photo</description>
+                <block class="Origines\CatalogWidget\Block\Adminhtml\Widget\ImageChooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string">Choose Image</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="template" xsi:type="select">
+                <label>Template</label>
+                <options>
+                    <option name="push_product_2pics" value="Origines_CatalogWidget::product/push_1pic.phtml">
+                        <label translate="true">Push 1 product (2 pics)</label>
+                    </option>
+                    <option name="push_product_1pic" value="Origines_CatalogWidget::product/push_2pics.phtml">
+                        <label translate="true">Push 1 product (1 pic)</label>
+                    </option>
+                </options>
+            </parameter>
+        </parameters>
+        <containers>
+            <container name="content">
+                <template name="push_product_brand" value="push_product_brand" />
+                <template name="push_product_category" value="push_product_category" />
+            </container>
+            <container name="content.top">
+                <template name="push_product_brand" value="push_product_brand" />
+                <template name="push_product_category" value="push_product_category" />
+            </container>
+            <container name="content.bottom">
+                <template name="push_product_brand" value="push_product_brand" />
+                <template name="push_product_category" value="push_product_category" />
+            </container>
+        </containers>
+    </widget>
+    <widget class="Origines\CatalogWidget\Block\Widget\NewsSlider" id="news_slider">
+        <label>News Slider</label>
+        <description>News slider</description>
+        <parameters>
+            <parameter name="title" visible="true" xsi:type="text">
+                <label>Title</label>
+            </parameter>
+            <parameter name="subtitle" visible="true" xsi:type="text">
+                <label>Sub Title</label>
+            </parameter>
+            <parameter name="template" xsi:type="select">
+                <label>Template</label>
+                <options>
+                    <option name="news_slider" value="Origines_CatalogWidget::widget/news_slider.phtml">
+                        <label translate="true">News Slider</label>
+                    </option>
+                    <option name="news_slider_classic" value="Origines_CatalogWidget::widget/news_slider_classic.phtml">
+                        <label translate="true">News Slider classique</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="condition" xsi:type="conditions" visible="true" required="true" sort_order="10"
+                       class="Magento\CatalogWidget\Block\Product\Widget\Conditions">
+                <label translate="true">Conditions</label>
+            </parameter>
+        </parameters>
+        <containers>
+            <container name="content">
+                <template name="news_slider" value="news_slider" />
+                <template name="news_slider_classic" value="news_slider_classic" />
+            </container>
+            <container name="content.top">
+                <template name="news_slider" value="news_slider" />
+                <template name="news_slider_classic" value="news_slider_classic" />
+            </container>
+            <container name="content.bottom">
+                <template name="news_slider" value="news_slider" />
+                <template name="news_slider_classic" value="news_slider_classic" />
+            </container>
+        </containers>
+    </widget>
+    <widget id="products_list">
+        <parameters>
+            <parameter name="slider_product_premium_content" visible="true" xsi:type="text">
+				<label>carrousel premium : mini texte</label>
+			</parameter>
+            <parameter name="slider_product_percent" visible="true" xsi:type="select">
+				<label>Pastilles pourcentage</label>
+                <options>
+                    <option name="percent_sales-on" value="1">
+                        <label translate="true">Afficher</label>
+                    </option>
+                    <option name="percent_sales-off" value="0">
+                        <label translate="true">Ne pas afficher</label>
+                    </option>
+                </options>
+			</parameter>
+            <parameter name="slider_product_numb_percent" visible="true" xsi:type="text">
+                <label>Afficher Pastilles à partir de : - X %</label>
+            </parameter>
+            <parameter name="slider_product_cta" visible="true" xsi:type="select">
+				<label>Afficher bouton CTA</label>
+                <options>
+                    <option name="cta-on" value="1">
+                        <label translate="true">Afficher</label>
+                    </option>
+                    <option name="cta-off" value="0">
+                        <label translate="true">Ne pas afficher</label>
+                    </option>
+                </options>
+			</parameter>
+            <parameter name="slider_product_outofstock" visible="true" xsi:type="select">
+				<label>Afficher les produits en rupture de stock</label>
+                <options>
+                    <option name="cta-on" value="1">
+                        <label translate="true">oui</label>
+                    </option>
+                    <option name="cta-off" value="0">
+                        <label translate="true">non</label>
+                    </option>
+                </options>
+			</parameter>
+            <parameter name="template" xsi:type="select">
+                <label>Template</label>
+                <options>
+                    <option name="slider_product_premium" value="Origines_CatalogWidget::widget/slider-product-premium.phtml">
+                        <label translate="true">Carrousel produits premium</label>
+                    </option>
+                    <option name="slider_product_classique" value="Origines_CatalogWidget::widget/slider_product_classique.phtml">
+                        <label translate="true">Carrousel produits classique</label>
+                    </option>
+                </options>
+            </parameter>
+        </parameters>
+        <containers>
+            <container name="content">
+                <template name="slider_product_classique" value="slider_product_classique" />
+                <template name="slider_product_premium" value="slider_product_premium" />
+            </container>
+            <container name="content.top">
+                <template name="slider_product_classique" value="slider_product_classique" />
+                <template name="slider_product_premium" value="slider_product_premium" />
+            </container>
+            <container name="content.bottom">
+                <template name="slider_product_classique" value="slider_product_classique" />
+                <template name="slider_product_premium" value="slider_product_premium" />
+            </container>
+        </containers>
+    </widget>
+</widgets>

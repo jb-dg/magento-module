@@ -1,0 +1,75 @@
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">origines_manufacturer_listing.origines_manufacturer_listing_data_source</item>
+            <item name="deps" xsi:type="string">origines_manufacturer_listing.origines_manufacturer_listing_data_source</item>
+        </item>
+        <item name="spinner" xsi:type="string">spinner_columns</item>
+        <item name="buttons" xsi:type="array">
+            <item name="add" xsi:type="array">
+                <item name="name" xsi:type="string">add</item>
+                <item name="label" xsi:type="string" translate="true">Add new manufacturer</item>
+                <item name="class" xsi:type="string">primary</item>
+                <item name="url" xsi:type="string">manufacturer/manufacturer/new</item>
+            </item>
+        </item>
+    </argument>
+    <dataSource name="datasource">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument>
+            <argument name="name" xsi:type="string">origines_manufacturer_listing_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">entity_id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+                    <item name="update_url" xsi:type="url" path="mui/index/render"/>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="indexField" xsi:type="string">entity_id</item>
+                    </item>
+                </item>
+            </argument>
+        </argument>
+    </dataSource>
+    <columns name="spinner_columns">
+        <column name="entity_id">
+            <settings>
+                <filter>textRange</filter>
+                <sorting>asc</sorting>
+                <label>ID</label>
+            </settings>
+        </column>
+        <column name="image" class="Origines\Manufacturer\Ui\Component\Listing\Column\ManufacturerImage">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/thumbnail</item>
+                </item>
+            </argument>
+            <settings>
+                <label>Image</label>
+                <sortable>false</sortable>
+                <hasPreview>1</hasPreview>
+            </settings>
+        </column>
+        <column name="name">
+            <settings>
+                <label>Name</label>
+            </settings>
+        </column>
+        <column name="layout" class="Origines\Manufacturer\Ui\Component\Listing\Column\ManufacturerLayout">
+            <settings>
+                <label>Layout</label>
+            </settings>
+        </column>
+        <column name="category" class="Origines\Manufacturer\Ui\Component\Listing\Column\ManufacturerCategory">
+            <settings>
+                <label>Category</label>
+            </settings>
+        </column>
+        <actionsColumn name="actions" class="Origines\Manufacturer\Ui\Component\Listing\Column\ManufacturerAction">
+            <settings>
+                <indexField>entity_id</indexField>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>
