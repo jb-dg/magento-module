@@ -1,0 +1,31 @@
+<?php
+/**
+ * @var $block \Origines\CategoryWidget\Block\Widget\CategoryList
+ */
+?>
+<div class="category-widget-main">
+    <div class="category">
+        <?php
+            $_category = $block->getCategory();
+        ?>        
+        <?php foreach ($_category as $item): ?>
+            <div class="category-list">
+                <a href="<?=$block->escapeUrl($item->getUrl()); ?>">
+                <?php
+                    $optionId = $item->getId();
+                    $optionList = $block->getManufacturerListing();
+
+                if (array_search($optionId, array_column($optionList, 'id')) !== false) {
+                    $c = array_search($optionId, array_column($optionList, 'id'));
+                    $i = array_column($optionList, 'id')[$c];
+                    $categoryName = $optionList[$i]['name'];
+                } else {
+                    $categoryName = $item->getName();
+                }
+                ?>
+                    <span><?=$block->escapeHtml($categoryName); ?></span>
+                </a>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>

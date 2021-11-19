@@ -1,0 +1,51 @@
+<?php $itemMySelection = $block->prepareDataItemMySelection(); ?>
+<div class="product-info">
+    <div class="mobile ms-block-img my_selection">
+        <img src="<?= $block->getViewFileUrl('images/my.svg'); ?>" ><?= ($block->escapeHtml(__('Must Have'))) ?>
+    </div>
+    <div class="product-detail">
+    <div class="desktop my_selection">
+       <img src="<?= $block->getViewFileUrl('images/my.svg'); ?>" ><?= ($block->escapeHtml(__('Must Have'))) ?>
+    </div>
+    <div class="product-brand"><?= $block->escapeHtml($itemMySelection['brand']) ?></div>
+            <a class="product-name" href="<?= $block->escapeUrl($itemMySelection['product_url']) ?>">
+                <?= $block->escapeHtml($itemMySelection['name']); ?></a>
+            <?php if ($secondName =  $itemMySelection['second_name']): ?>
+                <p class="product-second-name"><?= $block->escapeHtml($secondName) ?></p>
+            <?php endif; ?>
+            <div class="product-desc">
+                <?= $block->escapeHtml($itemMySelection['short_description']) ?>
+            </div>
+            <div class="product-price">           
+                <?= /* @noEscape */ $itemMySelection['price'] ?>
+            </div>
+            <div class="product-action">
+                <?php if ($itemMySelection['is_saleable']): ?>
+                    <form data-role="tocart-form" action="<?= $block->escapeUrl($itemMySelection['add_to_cart_url']) ?>" method="post">
+                        <?= /* @noEscape */ $block->getBlockHtml('formkey') ?>
+                        <button class="buy" type="submit"><?=($block->escapeHtml(__('Add to Cart >'))) ?></button>
+                    </form>
+                <?php else: ?>
+                    <div class="stock unavailable">
+                        <span><?= $block->escapeHtml(__('Out of stock')) ?></span>
+                    </div>
+                <?php endif; ?>
+            </div>
+         </div>
+         <div class="product-img">
+
+            <a href="<?= $block->escapeUrl($itemMySelection['product_url']); ?>">
+            <span class="product-image-container" style="width:100%;">
+                <span class="product-image-wrapper" style="padding-bottom: 100%;">
+                    <img class="product-image-photo lazyautosizes lazyloaded" data-sizes="auto" data-src="<?= /* @escapeNotVerified */ $itemMySelection['product_img']; ?>" alt="Essentiel Mat" sizes="340px" src="<?= /* @escapeNotVerified */ $itemMySelection['product_img']; ?>">
+                </span>
+            </span>
+            </a>
+
+            <?php if ($itemMySelection['is_enable_percent']):?>
+                <span class="sale-label" style="display:block">
+                    <span>-</span><?= $block->escapeHtml($itemMySelection['sale_percent']); ?>
+                </span>
+            <?php endif ?>
+        </div>
+</div> 

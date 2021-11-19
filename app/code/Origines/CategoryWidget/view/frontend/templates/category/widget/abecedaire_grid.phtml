@@ -1,0 +1,64 @@
+<?php
+/**
+ * @var $block \Origines\CategoryWidget\Block\Widget\CategoryList
+ */
+?>
+<div class="category-widget-main">
+    <div class="category category-abecedaire">
+        <?php
+        $allBrands = $alphabet = [];
+        foreach ($block->getCategory() as $item) {
+            $letter = substr($item->getName(), 0, 1);
+            $allBrands[$letter][$item->getId()] = [
+                'id' => $item->getId(),
+                'name' => strtolower($item->getName()),
+                'url' => $item->getUrl()
+            ];
+            $alphabet[$letter] = $letter;
+        }
+        ksort($alphabet);
+        ksort($allBrands);
+        ?>
+        <div id="selection">
+            <div id="menu_border">
+                <br />
+                <ul id="menu_filtre">
+                    <li id="all_marques"><a><?=$block->escapeHtml(__('All Brands:'))?></a></li>
+                    <?php foreach ($allBrands as $letter => $cats): ?>
+                    <li><a><?=$block->escapeHtml($letter); ?></a></li>
+                    <?php endforeach ?>
+                </ul>
+            </div>
+            <div id="tableau_marques">
+                <div>
+                    <?php foreach ($allBrands as $letter => $cats): ?>
+                        <div class="brands-letter tableau_marques_td" id="<?=$block->escapeHtml($letter) ?>">
+                            <div class="letter-brands-wrapper">
+                                <li class="index brand-item"><?=$block->escapeHtml($letter.'________') ?></li>
+                                <?php foreach ($cats as $cat): ?>
+                                    <?php
+                                        $optionId = $cat['id'];
+                                        $optionList = $block->getManufacturerListing();
+
+                                    if (array_search($optionId, array_column($optionList, 'id')) !== false) {
+                                        $c = array_search($optionId, array_column($optionList, 'id'));
+                                        $i = array_column($optionList, 'id')[$c];
+                                        $categoryName = $optionList[$i]['name'];
+                                    } else {
+                                        $categoryName = $cat['name'];
+                                    }
+                                    ?>
+                                    <li class="brand-item name">
+                                        <a href="<?=$block->escapeUrl($cat['url']) ?>">
+                                            <?=$block->escapeHtml(ucfirst($categoryName)) ?>
+                                        </a>
+                                    </li>
+                                <?php endforeach ?>
+                            </div>
+                        </div>
+                    <?php endforeach ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

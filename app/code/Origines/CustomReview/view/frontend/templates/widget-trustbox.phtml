@@ -1,0 +1,22 @@
+<?php
+/** @var \Magento\Review\Block\Product\Review $block */
+$blockReviewData = $block->getData();
+if (isset($blockReviewData['widget-product-reviews-trustpilot']) && !empty($blockReviewData['widget-product-reviews-trustpilot'])):
+?>
+<div id="product-review-container" data-role="product-review">
+	<!-- TrustBox widget - Product Reviews MultiSource -->
+        <div class="trustpilot-widget"
+			data-locale="<?= /* @noEscape */ $blockReviewData['widget-product-reviews-trustpilot']['data-locale']?>"
+			data-template-id="57177697fdb1180308e3815f" 
+			data-businessunit-id="<?= /* @noEscape */ $blockReviewData['widget-product-reviews-trustpilot']['data-businessunit-id']?>" 
+			data-style-height="<?= /* @noEscape */ $blockReviewData['widget-product-reviews-trustpilot']['data-style-height']?>" 
+			data-style-width="100%"
+			data-theme="light" 
+			data-sku="<?= /* @noEscape */ $blockReviewData['widget-product-reviews-trustpilot']['data-sku']?>"
+			data-review-languages="<?= /* @noEscape */ $blockReviewData['widget-product-reviews-trustpilot']['data-review-languages']?>" 
+			data-no-reviews="<?= /* @noEscape */ $blockReviewData['widget-product-reviews-trustpilot']['data-no-reviews']?>">
+          		<a href="https://fr.trustpilot.com/review/" target="_blank" rel="noopener">Trustpilot</a>
+        </div>
+     <!-- End TrustBox widget -->
+</div>
+<?php endif; ?>

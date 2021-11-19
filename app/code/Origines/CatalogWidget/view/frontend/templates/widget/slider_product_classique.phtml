@@ -1,0 +1,133 @@
+<?php
+/**
+ * @var $block \Magento\CatalogWidget\Block\Product\ProductsList
+ */
+
+$type = 'widget-product-grid';
+$mode = 'grid';
+$silderTitle = $block->getDataUsingMethod('title');
+$items = $block->prepareDataItemsSlider();
+$minPercent = $block->getMinPercent();
+
+if (!empty($items)):
+?>
+    <div class="slider__container is_mobile_one_half ">
+        <?php if ($silderTitle): ?>
+            <div class="slider_title__container">
+                <h2 class="slider__title titre__1"><?= $block->escapeHtml($silderTitle); ?></h2>
+            </div>
+        <?php endif ?>
+                <div class="slider__content">
+            <div data-mage-init='{"slickInit" : {"sliderType" : "classique"}}' class="will_be_slider">
+                <?php foreach ($items as $_item): ?>
+                    <div class="slider__item product-brand-<?= $_item['product_brand_id'] ?>">
+                        <div class="bloc_produit__container has-color">
+                            <a href="<?= $_item['product_url'] ?>" class="bloc_produit_image__container">
+                                <?= $_item['product_img'] ?>
+
+                                <?php if ($block->isDisplayPercent() && $_item['sale_percent'] >= $minPercent): ?>
+                                    <span class="pastille_promo">- <?= $_item['sale_percent'] ?>%</span>
+                                <?php endif ?>
+
+                                <?php if ($_item['exclusivity'] || $_item['heart_stroke'] || $_item['internet_exclusivity']) : ?>
+                                    <ul class="vignette__container">
+                                        <?php if ($_item['exclusivity']) : ?>
+                                            <li><span class="vignette primary"><?= $block->escapeHtml(__('exclusivity')); ?></span></li>
+                                        <?php endif ?>
+
+                                        <?php if ($_item['heart_stroke']) : ?>
+                                            <li><span class="vignette primary"><?= $block->escapeHtml(__('heart_stroke')); ?></span></li>
+                                        <?php endif ?>
+
+                                        <?php if ($_item['internet_exclusivity']) : ?>
+                                            <li><span class="vignette primary"><?= $block->escapeHtml(__('internet_exclusivity')); ?></span></li>
+                                        <?php endif ?>
+                                    </ul>
+                                <?php endif ?>
+                            </a>
+                        </div>
+                        <div class="bloc_produit__details product details product-item-details detail-listing-product">
+                            <span class="bloc_produit__marque"><?= $_item['product_brand'] ?></span>
+                            <span class="bloc_produit__label-primary">
+                                <a href="<?= $_item['product_url'] ?>"><?= $_item['product_name'] ?></a>
+                            </span>
+                            <span class="bloc_produit__label-secondary"><?= $_item['product_second_name'] ?></span>
+
+                            <div class="bloc_produit__prix">
+                                    <?= $_item['product_final_price'] ?>
+                            </div>
+
+                            <div class="detail" style="display : none">
+                                <?= /* @escapeNotVerified */ $_item['block_detail'] ?>
+                            </div>
+
+                            <?php if($block->isDisplayCta()): ?>
+                                <div class="bloc_produit__actions">
+                                     <?php if($_item['is_saleable']): ?>
+                                        <form data-role="tocart-form" action="<?= $_item['form_action'] ?>" method="post">
+                                            <?php if(!empty($_item['post_params'])): ?>
+                                                <?php
+                                                    $paramNameUrlEncoded = $_item['param_name_url_encoded'];
+                                                    $postParamsData = $_item['post_params'][ 'data' ];
+                                                ?>
+                                                <input type="hidden" name="product" value="<?= /* @noEscape */ $postParamsData['product'] ?>">
+                                                <input type="hidden" name="<?= /* @noEscape */ $paramNameUrlEncoded ?>"
+                                                    value="<?= $block->escapeHtmlAttr($postParamsData[$paramNameUrlEncoded]) ?>">
+                                                <?= /* @escapeNotVerified */ $block->getBlockHtml('formkey') ?>
+                                                <div class="static add-to-cart">
+                                                    <button type="submit" class="action primary">
+                                                         <span><?= $block->escapeHtmlAttr(__('Add to Cart')) ?></span>
+                                                    </button>
+                                                    <input type="hidden" name="qty" value="1"
+                                                           class="number" tabindex="0">
+                                                </div>
+                                            <?php else: ?>
+                                                <div class="static add-to-cart">
+                                                    <button type="button" onclick="window.location='<?= $_item['product_url'] ?>'"
+                                                        title="<?= $block->escapeHtml(__('Choose')) ?>" class="action primary">
+                                                        <span><?= $block->escapeHtml(__('Choose')) ?></span>
+                                                    </button>
+                                                </div>
+                                            <?php endif ?>
+                                        </form>
+                                    <?php else: ?>
+                                        <div class="action disabled">
+                                            <?= $block->escapeHtml(__('Out of stock')); ?>
+                                        </div>
+                                    <?php endif ?>
+                                </div>
+                            <?php endif ?>
+                        </div>
+                    </div>
+                <?php endforeach ?>
+            </div>
+        </div>
+    </div>
+    <?= $block->getToolbarHtml() ?>
+    <?php if (!$block->isRedirectToCartEnabled()): ?>
+        <script type="text/x-magento-init">
+        {
+            "[data-role=tocart-form], .form.map.checkout": {
+                "catalogAddToCart": {}
+            }
+        }
+        </script>
+    <?php endif; ?>
+<?php endif; ?>
+<script type="text/javascript">
+    if (document.querySelectorAll(".has-color .detail")) {
+        var detail = document.querySelectorAll(".has-color .detail");
+        var teinteSelect, detailAction, detailParent;
+        for (var i = 0; i < detail.length; i++) {
+            detail[i].addEventListener("click", function () {
+                var detailParent = this.parentNode;
+                teinteSelect = detailParent.getElementsByTagName("input")[0].getAttribute("value");
+                detailAction = detailParent.getElementsByTagName("form")[0].getAttribute("action");
+                detailParent.getElementsByTagName("button")[0].setAttribute(
+                    "onclick",
+                    "window.location='" + detailAction + "?color=" + teinteSelect.replace(/ /g, "+") + "'"
+                );
+            });
+        }
+    }
+</script>

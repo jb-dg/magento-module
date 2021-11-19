@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Magento_Reports::report_croneimport_index" title="import" module="Origines_CronImport" sortOrder="20"
+             parent="Magento_Reports::report_cronexport" action="cronimport/index" resource="Magento_Reports::exports"/>
+    </menu>
+</config>

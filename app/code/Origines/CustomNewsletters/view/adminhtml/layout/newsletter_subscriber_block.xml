@@ -1,0 +1,17 @@
+<?xml version="1.0"?>    
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock class="Magento\Backend\Block\Widget\Grid\ColumnSet" name="adminhtml.newslettrer.subscriber.grid.columnSet" as="grid.columnSet">
+            <block class="Magento\Backend\Block\Widget\Grid\Column" as="contact_name">
+                <arguments>
+                    <argument name="header" xsi:type="string" translate="true">Contact Name</argument>
+                    <argument name="index" xsi:type="string">contact_name</argument>
+                    <argument name="renderer" xsi:type="string">Origines\CustomNewsletters\Block\Newsletter\Adminhtml\Template\Grid\Renderer\ContactName</argument>
+                    <argument name="default" xsi:type="string">----</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+        <referenceBlock name="adminhtml.newslettrer.subscriber.grid.columnSet.firstname" remove="true" />
+        <referenceBlock name="adminhtml.newslettrer.subscriber.grid.columnSet.lastname" remove="true" />
+    </body>
+</page>

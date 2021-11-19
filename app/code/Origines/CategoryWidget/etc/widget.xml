@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="origines_catalog_category_list"
+            class="Origines\CategoryWidget\Block\Widget\CategoryList">
+        <label translate="true">Catalog Category Grid</label>
+        <description translate="true">Permet de générer une liste des catégories</description>
+        <parameters>
+            <parameter name="template" xsi:type="select" required="true" visible="true">
+                <label>Template</label>
+                <options>
+                    <option name="abecedaire" value="category/widget/abecedaire.phtml" selected="true">
+                        <label translate="true">Abecedaire All Template</label>
+                    </option>                  
+                    <option name="grid" value="category/widget/grid.phtml" selected="true">
+                        <label translate="true">Catégorie Grid Template</label>
+                    </option>
+                    <option name="abecedaire_grid" value="category/widget/abecedaire_grid.phtml">
+                        <label translate="true">Catégorie Abecedaire Template</label>
+                    </option>
+                    <option name="slider" value="category/widget/slider.phtml">
+                        <label translate="true">Catégorie Slider Template</label>
+                    </option>                    
+                </options>
+            </parameter>            
+            <parameter name="page_size" xsi:type="text" visible="true">
+                  <label translate="true">Nombre de Categories à afficher</label>
+                  <value>5</value>
+            </parameter>
+            <parameter name="condition" xsi:type="conditions" visible="true" sort_order="10"
+                        class="Magento\CatalogWidget\Block\Product\Widget\Conditions">
+                  <label translate="true">Conditions</label>
+            </parameter>            
+        </parameters>
+    </widget>   
+</widgets>

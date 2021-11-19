@@ -1,0 +1,39 @@
+<div class="product-push-marketing_multiple">
+    <div class="product-push-marketing">
+        <div class="product-push-marketing_content">
+            <div class="product-push-marketing_title">
+                <h3><?= $block->getData('title1');?></h3>
+            </div>
+        </div>
+        <a href="<?= $block->getData('url1');?>" title="<?= $block->getData('title1');?>" class="product-push-marketing_image">
+        <?php 
+        if ($block->getData('photo1')): 
+            if (str_contains($block->getData('photo1'), 'http')): ?>
+                <img src="<?= $block->getData('photo1');?>" alt="<?= $block->getData('title1');?>"/>
+            <?php else : ?>
+                <img src="<?= $block->getMediaUrl($block->getData('photo1'));?>" alt="<?= $block->getData('title1');?>"/>
+            <?php endif; 
+            endif; 
+        ?>
+        </a>
+    </div>
+
+    <div class="product-push-marketing">
+        <div class="product-push-marketing_content">
+            <div class="product-push-marketing_title">
+                <h3><?= $block->getData('title2');?></h3>
+            </div>
+        </div>
+        <a href="<?= $block->getData('url2');?>" title="<?= $block->getData('title2');?>" class="product-push-marketing_image">
+        <?php 
+        if ($block->getData('photo2')): 
+            if (str_contains($block->getData('photo2'), 'http')): ?>
+                <img src="<?= $block->getData('photo2');?>" alt="<?= $block->getData('title2');?>"/>
+            <?php else : ?>
+                <img src="<?= $block->getMediaUrl($block->getData('photo2'));?>" alt="<?= $block->getData('title2');?>"/>
+            <?php endif; 
+            endif; 
+        ?>
+        </a>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <apireviewsys>
+            <config_api_trustpilot>
+                <config_api_trustpilot>0</config_api_trustpilot>
+                <urlbase_api_trustpilot>https://api.trustpilot.com/v1</urlbase_api_trustpilot>
+                <apikey_trustpilot>4hmjTKmZ2FJ58h91caj2ITMaUIOILJj0</apikey_trustpilot>
+                <pass_secret_trustpilot>JwSPtqctHN2qjpHu</pass_secret_trustpilot>
+                <name_trustpilot>my-origines.com</name_trustpilot>
+                <username_login_trustpilot>info@my-origines.com</username_login_trustpilot>
+                <pass_login_trustpilot>Wj9Lb2vaW6V7c6ePi95M</pass_login_trustpilot>
+            </config_api_trustpilot>
+            <config_widget_trustbox>
+                <display_trustbox_trustpilot_empty>0</display_trustbox_trustpilot_empty>
+                <data_style_height>700px</data_style_height>
+            </config_widget_trustbox>
+        </apireviewsys>
+    </default>
+</config>

@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<config>
+    <type name="Magento\Customer\Block\Widget\Dob">
+      <plugin name="customerDob" type="Origines\Customer\Plugin\PluginDob" sortOrder="1" disabled="false" />
+    </type>
+</config>

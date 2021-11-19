@@ -1,0 +1,17 @@
+<div class="product-push-marketing">
+    <div class="product-push-marketing_content">
+        <div class="product-push-marketing_title">
+            <h3><?= $block->getTitle();?></h3>
+        </div>
+        <div class="product-push-marketing_description">
+            <?= $block->getContent();?>
+        </div>
+        <div class="product-push-marketing_button">
+            <a href="<?= $block->getUrl();?>" title="<?= $block->getTitle();?>" class="action primary-color">
+                <?= $block->getCta();?>
+            </a>
+        </div>
+    </div>
+    <?php $mediaUrl = ($block->getPhoto() ? $block->getMediaUrl($block->getPhoto()) : ""); ?>
+    <div class="product-push-marketing_image" style="background-image: url('<?= $mediaUrl ?>');"></div>
+</div>
